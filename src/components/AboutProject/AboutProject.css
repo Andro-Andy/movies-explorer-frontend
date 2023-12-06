@@ -1,0 +1,162 @@
+.about-project {
+  background-color: #202020;
+  padding: 110px 70px;
+  box-sizing: border-box;
+}
+
+.about-project__title {
+  margin: 0 0 70px;
+}
+
+.about-project__description {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 111px;
+}
+
+.about-project__block {
+  width: 100%;
+}
+
+.about-project__block:last-of-type {
+  padding-right: 0;
+  margin-right: 0;
+}
+
+.about-project__subtitle {
+  margin: 0 0 26px;
+  font-weight: 400;
+  line-height: 24px;
+  font-size: 20px;
+  letter-spacing: -0.8px;
+}
+
+.about-project__text {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.about-project__scale {
+  width: 100%;
+  display: flex;
+}
+
+.about-project__scale-block-backend {
+  width: 20%;
+}
+
+.about-project__scale-block-frontend {
+  flex-grow: 1;
+}
+
+.about-project__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  min-height: 35px;
+  padding: 0;
+  margin: 0 auto 14px;
+}
+
+.about-project__item_type_first-block {
+  color: #000000;
+  background-color: #3ddc84;
+}
+
+.about-project__item_type_second-block {
+  background-color: #303030;
+}
+
+.about-project__theme {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17px;
+  text-align: center;
+  color: #8b8b8b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 800px) {
+  .about-project {
+    padding: 90px 50px;
+  }
+
+  .about-project__description {
+    gap: 30px;
+    margin-bottom: 93px;
+  }
+
+  .about-project__block {
+    max-width: 319px;
+  }
+
+  .about-project__subtitle {
+    margin-bottom: 22px;
+    font-size: 20px;
+    line-height: 24.2px;
+  }
+
+  .about-project__text {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .about-project__scale-block-backend {
+    width: 21%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .about-project {
+    padding: 68px 18px 70px;
+  }
+
+  .about-project__title {
+    margin-bottom: 60px;
+  }
+
+  .about-project__description {
+    margin-bottom: 61px;
+    flex-direction: column;
+    gap: 57px;
+    padding-top: 0;
+  }
+
+  .about-project__subtitle {
+    margin-bottom: 16px;
+    font-size: 18px;
+    line-height: normal;
+    letter-spacing: -0.72px;
+  }
+
+  .about-project__text {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .about-project__scale-block-backend {
+    width: 35%;
+  }
+
+  .about-project__item {
+    font-size: 11px;
+    line-height: normal;
+    min-height: 34px;
+    padding: 0;
+    margin-bottom: 10px;
+  }
+
+  .about-project__theme {
+    font-size: 11px;
+    font-weight: 400;
+    line-height: normal;
+  }
+}

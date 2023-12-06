@@ -1,0 +1,47 @@
+.header__nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 183px;
+  height: 32px;
+}
+
+.header__nav-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  width: 77px;
+  height: 16px;
+  padding: 0;
+}
+
+.header__nav-btn_type_login {
+  border-radius: 3px;
+  background: #3ddc84;
+  color: #000;
+  border: none;
+  padding: 0;
+  width: 76px;
+  height: 32px;
+}
+
+@media screen and (max-width: 400px) {
+  .header__nav {
+    max-width: 132px;
+  }
+
+  .header__nav-btn {
+    font-size: 10px;
+    line-height: 16px;
+  }
+
+  .header__nav-btn_type_login {
+    width: 54px;
+    height: 26px;
+  }
+}

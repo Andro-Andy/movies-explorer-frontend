@@ -1,0 +1,148 @@
+.about-me {
+  margin: 0 auto;
+  padding: 110px 70px 101px;
+}
+
+.about-me__title {
+  margin-bottom: 66px;
+  padding-bottom: 24px;
+}
+
+.about-me__info {
+  padding-top: 7px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.about-me__profile {
+  max-width: 600px;
+  width: 100%;
+}
+
+.about-me__name {
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 58px;
+  letter-spacing: -2px;
+  margin: 0 0 19px;
+}
+
+.about-me__profession {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 20px;
+  margin: 0 0 25px;
+}
+
+.about-me__description {
+  margin: 0 0 100px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+}
+
+.about-me__github {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.about-me__photo {
+  width: 270px;
+  height: 327px;
+  border-radius: 10px;
+  object-fit: cover;
+  height: auto;
+  object-position: center;
+}
+
+.link {
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1050px) {
+  .about-me__profile {
+    max-width: 500px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .about-me__title {
+    margin-bottom: 66px;
+  }
+
+  .about-me__name {
+    font-size: 40px;
+    line-height: 40px;
+    letter-spacing: -1.6px;
+    margin-bottom: 16px;
+  }
+
+  .about-me__photo {
+    width: 255px;
+    height: 307px;
+  }
+
+  .about-me__profession {
+    font-size: 12px;
+    line-height: 18px;
+    margin-bottom: 20px;
+  }
+
+  .about-me__description {
+    font-size: 12px;
+    line-height: 18px;
+    margin-bottom: 87px;
+  }
+
+  .about-me__profile {
+    max-width: 364px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .about-me {
+    padding: 69px 14px 70px;
+  }
+
+  .about-me__info {
+    display: grid;
+    grid-template-rows: 352px minmax(194px, 1fr);
+    gap: 40px;
+    padding-top: 0;
+  }
+
+  .about-me__photo {
+    margin: 0 auto;
+    width: 292px;
+    height: 352px;
+    grid-row: 1;
+  }
+
+  .about-me__profile {
+    grid-row: 2;
+  }
+
+  .about-me__name {
+    font-size: 30px;
+    line-height: normal;
+    letter-spacing: -1.2px;
+    margin-bottom: 20px;
+  }
+
+  .about-me__profession {
+    font-size: 11px;
+    line-height: 16px;
+    margin-bottom: 20px;
+  }
+
+  .about-me__description {
+    margin-bottom: 40px;
+    font-size: 11px;
+    line-height: 16px;
+  }
+}
