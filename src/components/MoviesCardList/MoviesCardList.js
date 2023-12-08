@@ -103,11 +103,11 @@ function MoviesCardList() {
   ];
 
   return (
-    <div className="movies-cardlist">
+    <ul className="movies-cardlist">
       {moviesData.map((movie, index) => (
         <MoviesCard key={index} movie={movie} />
       ))}
-    </div>
+    </ul>
   );
 }
 

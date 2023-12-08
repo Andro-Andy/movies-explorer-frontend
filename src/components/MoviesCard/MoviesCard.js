@@ -14,7 +14,7 @@ function MoviesCard({ movie }) {
   });
 
   return (
-    <div className='movies-card'>
+    <li className='movies-card'>
       <div className="movies-card__info">
         <h2 className="movies-card__title">{movie.title}</h2>
         <p className="movies-card__duration">{movie.duration}</p>
@@ -23,7 +23,7 @@ function MoviesCard({ movie }) {
       <button className={saveButtonClass} onClick={handleButtonClick}>
         {isSaved ? null : 'Сохранить'}
       </button>
-    </div>
+    </li>
   );
 }
 

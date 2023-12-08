@@ -1,6 +1,5 @@
 .about-me {
   margin: 0 auto;
-  padding: 110px 70px 101px;
 }
 
 .about-me__title {
@@ -17,7 +16,6 @@
 }
 
 .about-me__profile {
-  max-width: 600px;
   width: 100%;
 }
 
@@ -64,9 +62,21 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 1050px) {
+@media screen and (min-width: 768px) {
+  .about-me__profile {
+    max-width: 364px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
   .about-me__profile {
     max-width: 500px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .about-me__profile {
+    max-width: 600px;
   }
 }
 
@@ -99,12 +109,11 @@
     margin-bottom: 87px;
   }
 
-  .about-me__profile {
-    max-width: 364px;
-  }
+
 }
 
-@media screen and (max-width: 500px) {
+
+@media screen and (max-width: 767px) {
   .about-me {
     padding: 69px 14px 70px;
   }
