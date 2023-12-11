@@ -1,0 +1,109 @@
+.promo {
+  width: 100%;
+  margin: 0 auto;
+  padding: 149px 70px 75px;
+  background-color: #073042;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.promo__description {
+  max-width: 640px;
+  margin: 0;
+}
+
+.promo__title {
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 58px;
+  max-width: 640px;
+  margin: 0 0 36px;
+}
+
+.promo__learn-more {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 16px;
+  opacity: 50%;
+  max-width: 310px;
+  margin: 0 0 146px;
+}
+
+.promo__logo {
+  width: 310px;
+  height: 304px;
+  border: none;
+  padding: 0;
+}
+
+.promo__learn-btn {
+  border: 1px solid #fff;
+  border-radius: 3px;
+  background-color: transparent;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  text-align: center;
+  color: #fff;
+  width: 129px;
+  height: 36px;
+  padding: 0;
+}
+
+@media screen and (max-width: 890px) {
+  .promo {
+    padding: 214px 70px 76px;
+    flex-direction: column-reverse;
+    gap: 48px; /* Гэп между строками */
+  }
+
+  .promo__logo {
+    grid-row: 1 / span 1; /* Расположение в первой строке */
+    margin: 0 auto;
+  }
+
+  .promo__description {
+    grid-row: 2 / span 1; /* Расположение во второй строке */
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .promo__title {
+    width: 100%;
+    margin-bottom: 22px;
+    max-width: 680px;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 50px;
+  }
+
+  .promo__learn-more {
+    margin: 0 auto 92px;
+    max-width: 260px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .promo {
+    padding: 145px 10px 30px;
+      gap: 43px;
+  }
+
+  .promo__logo {
+    width: 210px;
+    height: 206px;
+  }
+
+  .promo__title {
+    width: 100%;
+    margin-bottom: 24px;
+    max-width: 300px;
+    font-size: 30px;
+    line-height: 38px;
+    letter-spacing: -1.2px;
+  }
+  .promo__learn-more {
+    margin-bottom: 80px;
+  }
+}

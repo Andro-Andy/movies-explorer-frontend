@@ -1,0 +1,148 @@
+.header__navigation {
+  display: flex;
+  justify-content: space-between;
+  max-width: 381px;
+  width: 100%;
+  align-items: center;
+  transition: all 200ms ease;
+}
+
+.header__menu {
+  max-width: 231px;
+  width: 100%;
+}
+
+.header__profile {
+  display: flex;
+  justify-content: space-between;
+  max-width: 100px;
+  width: 100%;
+  align-items: center;
+  text-decoration: none;
+}
+
+.header__links {
+  display: flex;
+  justify-content: space-between;
+  max-width: 231px;
+  width: 100%;
+  list-style: none;
+  padding: 0;
+}
+
+.header__link {
+  text-decoration: none;
+  cursor: pointer;
+  color: #fff;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.header__link_is-active {
+  font-weight: 500px;
+}
+
+.header__close-burger {
+  width: 27px;
+  height: 27px;
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  display: none;
+  background-image: url(/src/images/icon/closeBtn.svg);
+  background-color: #ffffff00;
+  background-size: cover;
+  border: none;
+  padding: 0;
+}
+
+.main-href {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .header__navigation {
+    position: fixed;
+    top: 0;
+    max-width: 520px;
+    height: 100vh;
+    right: -520px;
+    background: #202020;
+    flex-direction: column;
+    padding-top: 160px;
+    z-index: 999;
+  }
+
+  .header__links {
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+  }
+
+  .header__item {
+    padding-bottom: 3px;
+  }
+
+  .header__link {
+    font-size: 18px;
+    line-height: normal;
+    font-weight: 500;
+  }
+
+  .underline {
+    border-bottom: 2px solid #fff;
+  }
+
+  .font {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+  }
+
+  .header__profile {
+    position: absolute;
+    bottom: 92px;
+  }
+
+  .main-href {
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  .header__profile-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .header__close-burger {
+    display: block;
+    cursor: pointer;
+  }
+
+
+}
+
+@media screen and (max-width: 400px) {
+  .header__navigation {
+    padding-top: 144px;
+  }
+
+  .header__links {
+    gap: 17px;
+  }
+
+  .header__item {
+    padding-bottom: 6px;
+  }
+
+  .header__profile {
+    bottom: 48px;
+  }
+
+  .header__close-burger {
+    top: 15px;
+    right: 15px;
+  }
+}
