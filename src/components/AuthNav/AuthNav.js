@@ -16,7 +16,7 @@ function AuthNav() {
       </button>
       <button
         className="header__nav-btn header__nav-btn_type_login"
-        type="button"
+        type="button" 
         onClick={() => handleClick('/signin')}
       >
         Войти

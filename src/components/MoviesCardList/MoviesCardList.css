@@ -11,6 +11,32 @@
   justify-content: center;
 }
 
+.movies-content__error-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding-top: 50px;
+}
+
+.movies-content__error {
+  height: 50px;
+  font-size: 20px;
+  color: #fff;
+  text-align: center;
+  margin: 20px 0 0;
+}
+
+.movies-content__error-arrow {
+  display: block;
+  width: 40px;
+  height: 40px;
+  background: url('../../images/icon/up-arrow.svg') center center no-repeat;
+}
+
+.movies-content__loader-wrapper {
+  height: 50vh;
+}
+
 @media screen and (max-width: 1100px) {
   .movies-cardlist {
     grid-template-columns: repeat(2, minmax(300px, 360px));
@@ -24,5 +50,16 @@
     display: grid;
     grid-template-columns: 1fr;
     row-gap: 36px;
+  }
+
+  .movies-content__error {
+    font-size: 16px;
+    margin-top: 24px;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .movies-content__error-arrow {
+    display: none;
   }
 }

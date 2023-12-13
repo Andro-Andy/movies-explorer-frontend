@@ -1,0 +1,8 @@
+@keyframes error-input {
+  from {
+    border-bottom-color: #EE3465;
+  }
+  to {
+    border-bottom-color: #424242;
+  }
+}

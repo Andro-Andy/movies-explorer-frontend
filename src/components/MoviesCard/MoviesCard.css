@@ -59,6 +59,13 @@
 
 }
 
+.movies-card__delete {
+  background-image: url(../../images/icon/card-delete.svg);
+  background-color: transparent;
+  background-size: cover;
+  transition: all 200ms ease-in-out;
+}
+
 .movies-card__title {
   text-align: left;
   margin: 0;
