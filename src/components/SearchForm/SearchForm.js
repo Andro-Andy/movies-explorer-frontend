@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import SearchIcon from '../../images/icon/icon-find.svg';
+// import SearchIcon from '../../images/icon/icon-find.svg';
 import { useLocation } from 'react-router-dom';
 import { ROUTER, SEARCH_KEY } from '../../utils/config.global';
 import './SearchForm.css';
-
+import FilterCheckbox from '../FilterCheckbox/FilterCheckbox'
 function SearchForm({ onSubmit, savedQuery }) {
   const path = useLocation().pathname;
   const isMoviesPage = path === ROUTER.movies;
@@ -26,7 +26,7 @@ function SearchForm({ onSubmit, savedQuery }) {
   const handleChangeCheckbox = (evt) => {
     if (!query.string && isMoviesPage) {
       setError(true);
-      return setTimeout(() => setError(false), 700);
+      return setTimeout(() => setError(true), 700);
     }
     setQuery((query) => ({ ...query, isShort: evt.target.checked }));
     onSubmit({ string: query.string, isShort: evt.target.checked });
@@ -40,31 +40,19 @@ function SearchForm({ onSubmit, savedQuery }) {
   return (
     <>
       <form className={`search-form ${isError && 'search-form_type_error'}`} onSubmit={handleSubmit}>
-        <img
-          className="search-form__icon"
-          src={SearchIcon}
-          alt="Иконка поиска в виде лупы"
-        />
-        <input
-          className="search-form__input"
-          type="text"
-          placeholder="Фильм"
-          onChange={handleChange}
-          value={query.string}
-          required
-        />
-        <button className="search-form__button" type="submit" />
+        <div className='serch-form__border'>
+          <input
+            className="search-form__input"
+            type="text"
+            placeholder="Фильм"
+            value={query.string}
+            onChange={handleChange}
+            required
+          />
+          <button className="search-form__button" type="submit" >Поиск</button>
+        </div>
+        <FilterCheckbox checked={query.isShort} onChange={handleChangeCheckbox} />
       </form>
-      <label className="search-form__label">
-        <input
-          type="checkbox"
-          className="search-form__checkbox"
-          checked={query.isShort}
-          onChange={handleChangeCheckbox}
-        />
-        <span className="search-form__checkbox-span" />
-        <p className="search__checkbox-caption">Короткометражки</p>
-      </label>
     </>
   );
 

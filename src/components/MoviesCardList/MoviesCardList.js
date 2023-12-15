@@ -4,6 +4,7 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { ROUTER, SCREEN } from '../../utils/config.global';
 import { ScreenTypeContext } from '../../contexts/ScreenTypeContext';
+import More from '../More/More'
 import Loader from '../Loader/Loader';
 
 function MoviesCardList({ movies, savedMovies, searchStatus, onSave, onRemove }) {
@@ -28,10 +29,12 @@ function MoviesCardList({ movies, savedMovies, searchStatus, onSave, onRemove })
     };
 
     calculateRenderCount();
+  }, [page, screenType]);
 
+  useEffect(() => {
     const isMoreButtonVisible = movies.length > renderCount;
     setMoreButton(isMoreButtonVisible);
-  }, [page, movies, screenType]);
+  }, [movies, renderCount]);
 
   const incrementPage = () => {
     paginationDebounce.current = clearTimeout(paginationDebounce.current);
@@ -70,30 +73,24 @@ function MoviesCardList({ movies, savedMovies, searchStatus, onSave, onRemove })
   };
 
   return (
-    <div className="movies-content">
-      {searchStatus.isLoading && <Loader />}
-      {!searchStatus.isLoading && !searchStatus.isError && (
-        <>
-          <ul className="movies-cardlist">{renderMovies()}</ul>
-          {isMoreButton && !isRenderingMore && (
-            <div className="more">
-              <button className="more__btn" onClick={incrementPage}>
-                Ещё
-              </button>
-            </div>
-          )}
-          {isRenderingMore && <Loader />}
-        </>
-      )}
-      {searchStatus.isError && (
-        <div className="movies-content__error-wrapper">
-          {searchStatus.message === 'Найдите фильм себе по душе' && (
-            <span className="movies-content__error-arrow" />
-          )}
-          <h2 className="movies-content__error">{searchStatus.message}</h2>
-        </div>
-      )}
-    </div>
+    searchStatus.isLoading ? <Loader /> :
+      <>
+        {searchStatus.isError
+          ? <div className="movies-content__error-wrapper">
+            {searchStatus.message === 'Найдите фильм себе по душе' &&
+              <span className="movies-content__error-arrow" />}
+            <h2 className="movies-content__error">{searchStatus.message}</h2>
+          </div>
+
+          : <ul className="movies-cardlist">
+            {renderMovies()}
+          </ul>
+        }
+        {isMoreButton && !isRenderingMore && !searchStatus.isError &&
+          <More onClick={incrementPage} />
+        }
+        {isRenderingMore && <Loader />}
+      </>
   );
 }
 

@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
 import { MOVIES_URL } from '../../utils/config.global';
 import './MoviesCard.css';
-import classnames from 'classnames';
 
 function MoviesCard({ movie, isLiked, isSavedMoviesPage, onSave, onRemove }) {
   const formatDuration = (duration) => {
@@ -22,16 +20,6 @@ function MoviesCard({ movie, isLiked, isSavedMoviesPage, onSave, onRemove }) {
     return isSavedMoviesPage ? movie.image : MOVIES_URL + movie.image.url;
   };
 
-  const [isSaved, setIsSaved] = useState(false);
-
-  const handleButtonClick = () => {
-    setIsSaved((prevIsSaved) => !prevIsSaved);
-  };
-
-  const saveButtonClass = classnames('movies-card__save', {
-    'movies-card__save-active': movie.isLiked && isSaved,
-  });
-
   return (
     <li className='movies-card'>
       <div className="movies-card__info">
@@ -44,22 +32,19 @@ function MoviesCard({ movie, isLiked, isSavedMoviesPage, onSave, onRemove }) {
         className="movies-card__image"
         onClick={openTrailerLink}
       />
-      <button className={saveButtonClass} onClick={handleButtonClick}>
-        {isSaved ? null : 'Сохранить'}
-      </button>
+      {isLiked && !isSavedMoviesPage && (
+        <button
+          className={`movies-card__save ${isLiked ? 'movies-card__save-active' : ''}`}
+          onClick={() => onRemove(movie._id)}
+        />
+      )}
       {!isSavedMoviesPage && !isLiked && (
         <button className="movies-card__save" onClick={() => onSave(movie)}>
           Сохранить
         </button>
       )}
-      {isLiked && !isSavedMoviesPage && (
-        <button
-          className={`movies-card__save-active ${isLiked ? 'movies-card__save-active' : ''}`}
-          onClick={() => onRemove(movie._id)}
-        />
-      )}
       {isSavedMoviesPage && (
-        <button className={'movies-card__delete'} onClick={() => onRemove(movie._id)} />
+        <button className="movies-card__save movies-card__delete" onClick={() => onRemove(movie._id)} />
       )}
     </li>
   );

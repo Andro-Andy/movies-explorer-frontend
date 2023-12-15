@@ -11,7 +11,6 @@ function Navigation({ burger, setBurger }) {
   };
 
   const navLinks = [
-    { to: ROUTER.main, text: 'Главная' },
     { to: ROUTER.movies, text: 'Фильмы' },
     { to: ROUTER.saved, text: 'Сохраненные фильмы' },
   ];
@@ -19,10 +18,10 @@ function Navigation({ burger, setBurger }) {
   return (
     <section className={cn('header__navigation', { 'burger-active': burger })}>
       <button onClick={() => setBurger(false)} className="header__close-burger"></button>
-      <nav className='header__menu'>
+      <nav className="header__menu">
         <ul className="header__links">
           {navLinks.map((link, index) => (
-            <li key={index} className="header__item main-href">
+            <li key={index} className="header__item">
               <NavLink
                 className={({ isActive }) => `header__link link ${isActive && 'underline'}`}
                 to={link.to}
@@ -31,6 +30,7 @@ function Navigation({ burger, setBurger }) {
                 {link.text}
               </NavLink>
             </li>
+
           ))}
         </ul>
       </nav>

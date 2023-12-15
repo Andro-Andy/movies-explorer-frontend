@@ -20,8 +20,10 @@
 
 .movies-card__image {
   width: 100%;
-  height: auto;
+  height: 201px;
   margin: 18px 0;
+  object-fit: cover;
+  cursor: pointer;
 }
 
 

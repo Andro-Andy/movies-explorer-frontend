@@ -30,7 +30,7 @@ export const useFilter = ({ movies, isSavedMoviesPage }) => {
         setSearchStatus((prevState) => ({
           ...prevState,
           isError: true,
-          message: 'Найдите фильм себе по душе (˵ •̀ ᴗ - ˵ )',
+          message: 'Найдите фильм себе по душе ',
         }));
       }
     };
@@ -93,7 +93,7 @@ export const useFilter = ({ movies, isSavedMoviesPage }) => {
         setSearchStatus((prevState) => ({
           ...prevState,
           isError: true,
-          message: 'Ничего не найдено (·•᷄∩•᷅)',
+          message: 'Ничего не найдено',
         }));
       }
       setFilteredMovies(filteredMovies);

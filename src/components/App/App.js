@@ -174,7 +174,6 @@ function App() {
       nameRU: movie.nameRU,
       nameEN: movie.nameEN,
     };
-
     api.saveMovie({ ...reqData })
       .then((savedMovie) => setSavedMovies((movies) => [...movies, savedMovie]))
       .catch(console.error);

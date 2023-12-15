@@ -34,7 +34,7 @@
   margin: 10px 0;
 }
 
-.auth__input:focus ~ .auth__span {
+.auth__input:focus~.auth__span {
   color: #fff;
 }
 
@@ -44,10 +44,10 @@
   border: none;
   border-radius: 8px;
   background-color: #2f2f2f;
-  /*margin-bottom: 10px;*/
   font-size: 13px;
   color: #fff;
   padding: 15px;
+  /* border-bottom: 1px solid #424242; */
 }
 
 .auth__input_type_invalid {
