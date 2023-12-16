@@ -4,7 +4,7 @@
 
 # [Frontend](https://movie-dox.nomoredomainsmonster.ru)
 
-### IP ВМ: 84.201.188.166
+### IP ВМ: 51.250.81.187
 
 maket dark-4
 
