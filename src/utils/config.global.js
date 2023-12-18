@@ -1,8 +1,8 @@
 export const TOKEN_KEY = 'jwt';
 export const SEARCH_KEY = 'search';
 
-// export const URL_MAIN_API = 'https://api.movie-dox.nomoredomainsmonster.ru';
-export const URL_MAIN_API = 'http://localhost:3001';
+export const URL_MAIN_API = 'https://api.movie-dox.nomoredomainsmonster.ru';
+// export const URL_MAIN_API = 'http://localhost:3001';
 export const URL_MOVIES_API = 'https://api.nomoreparties.co/beatfilm-movies';
 export const MOVIES_URL = 'https://api.nomoreparties.co';
 
