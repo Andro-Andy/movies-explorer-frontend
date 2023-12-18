@@ -4,14 +4,9 @@ import Logo from '../Logo/Logo';
 import './Login.css';
 
 function Login({ setViewHeader }) {
-
   useEffect(() => {
     setViewHeader(false);
-  }, []);
-
-  // function handleSubmit(event) {
-  //   event.preventDefault();
-  // }
+  }, [setViewHeader]);
 
   return (
     <section className="register login">
@@ -26,14 +21,14 @@ function Login({ setViewHeader }) {
           type="email"
           className="login__input"
           htmlFor="email"
-          value={'pochta@yandex.ru'}
+          value="pochta@yandex.ru"
           required
         />
         <label htmlFor="password" className="login__label">
           Пароль
         </label>
         <input
-          htmlFor="password"
+          id="password"
           type="password"
           className="login__input"
           required

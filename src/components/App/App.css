@@ -17,7 +17,7 @@ img {
   max-width: 100%;
 }
 
-.page {
+.root {
   font-family: "Inter", Arial, sans-serif;
   width: 100%;
   min-height: 100vh;

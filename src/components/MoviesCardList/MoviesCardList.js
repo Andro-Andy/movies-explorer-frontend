@@ -1,113 +1,95 @@
-import React from 'react';
 import MoviesCard from '../MoviesCard/MoviesCard';
-import Words from '../../images/list/words_pic.png';
-import Kinoalmanakh from '../../images/list/kinoalmanakh_pic.png';
-import Benksy from '../../images/list/benksy_pic.png';
-import Baskiya from '../../images/list/baskiya_pic.png';
-import RunFreedom from '../../images/list/run-freedom_pic.png';
-import Books from '../../images/list/books_pic.png';
-import WhenThinking from '../../images/list/when-thinking.png';
-import GimmeDanger from '../../images/list/gimme-danger_pic.png';
-import Djenis from '../../images/list/djenis.png';
-import BeforeJump from '../../images/list/before-jump_pic.png';
-import JayKharvy from '../../images/list/jay-kharvy_pic.png';
-import Povolnam from '../../images/list/povolnam_pic.png';
 import './MoviesCardList.css';
+import { useContext, useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { ROUTER, SCREEN } from '../../utils/config.global';
+import { ScreenTypeContext } from '../../contexts/ScreenTypeContext';
+import More from '../More/More'
+import Loader from '../Loader/Loader';
 
-function MoviesCardList() {
-  const moviesData = [
-    {
-      title: '33 слова о дизайне',
-      duration: '0ч 42м',
-      imageUrl: Words,
-      isLiked: true,
-      onLikeClick: () => console.log('Like button clicked for Movie Title 1'),
-    },
-    {
-      title: 'В погоне за Бенкси',
-      duration: '0ч 42м',
-      imageUrl: Kinoalmanakh,
-      isLiked: true,
-      onLikeClick: () => console.log('Like button clicked for Movie Title 2'),
-    },
-    {
-      title: 'Movie Title 3',
-      duration: '0ч 42м',
-      imageUrl: Benksy,
-      isLiked: true,
-      onLikeClick: () => console.log('Like button clicked for Movie Title 3'),
-    },
-    {
-      title: 'Movie Title 3',
-      duration: '0ч 42м',
-      imageUrl: Baskiya,
-      isLiked: true,
-      onLikeClick: () => console.log('Like button clicked for Movie Title 3'),
-    },
-    {
-      title: 'Movie Title 3',
-      duration: '0ч 42м',
-      imageUrl: RunFreedom,
-      isLiked: true,
-      onLikeClick: () => console.log('Like button clicked for Movie Title 3'),
-    },
-    {
-      title: 'Movie Title 3',
-      duration: '0ч 42м',
-      imageUrl: Books,
-      isLiked: true,
-      onLikeClick: () => console.log('Like button clicked for Movie Title 3'),
-    },
-    {
-      title: 'Movie Title 3',
-      duration: '0ч 42м',
-      imageUrl: WhenThinking,
-      isLiked: true,
-      onLikeClick: () => console.log('Like button clicked for Movie Title 3'),
-    },
-    {
-      title: 'Movie Title 3',
-      duration: '0ч 42м',
-      imageUrl: GimmeDanger,
-      isLiked: true,
-      onLikeClick: () => console.log('Like button clicked for Movie Title 3'),
-    },
-    {
-      title: 'Movie Title 3',
-      duration: '0ч 42м',
-      imageUrl: Djenis,
-      isLiked: true,
-      onLikeClick: () => console.log('Like button clicked for Movie Title 3'),
-    },
-    {
-      title: 'Movie Title 3',
-      duration: '0ч 42м',
-      imageUrl: BeforeJump,
-      isLiked: true,
-      onLikeClick: () => console.log('Like button clicked for Movie Title 3'),
-    },
-    {
-      title: 'Movie Title 3',
-      duration: '0ч 42м',
-      imageUrl: JayKharvy,
-      isLiked: true,
-      onLikeClick: () => console.log('Like button clicked for Movie Title 3'),
-    },
-    {
-      title: 'Movie Title 3',
-      duration: '0ч 42м',
-      imageUrl: Povolnam,
-      isLiked: true,
-      onLikeClick: () => console.log('Like button clicked for Movie Title 3'),
-    },
-  ];
+function MoviesCardList({ movies, savedMovies, searchStatus, onSave, onRemove }) {
+  const screenType = useContext(ScreenTypeContext);
+  const [isMoreButton, setMoreButton] = useState(false);
+  const [isRenderingMore, setRenderingMore] = useState(false);
+  const [renderCount, setRenderCount] = useState(0);
+  const [page, setPage] = useState(0);
+  const paginationDebounce = useRef(null);
+  const path = useLocation().pathname;
+  const isSavedMoviesPage = path === ROUTER.saved;
+
+  useEffect(() => {
+    setMoreButton(!isSavedMoviesPage);
+  }, [path, isSavedMoviesPage]);
+
+  useEffect(() => {
+    const calculateRenderCount = () => {
+      const baseRenderCount = SCREEN[screenType].render;
+      const additionalRenderCount = SCREEN[screenType].more * page;
+      setRenderCount(baseRenderCount + additionalRenderCount);
+    };
+
+    calculateRenderCount();
+  }, [page, screenType]);
+
+  useEffect(() => {
+    const isMoreButtonVisible = movies.length > renderCount;
+    setMoreButton(isMoreButtonVisible);
+  }, [movies, renderCount]);
+
+  const incrementPage = () => {
+    paginationDebounce.current = clearTimeout(paginationDebounce.current);
+    setRenderingMore(true);
+    paginationDebounce.current = setTimeout(() => {
+      setPage((prevPage) => prevPage + 1);
+      setRenderingMore(false);
+    }, 500);
+  };
+
+  const isLiked = (movie) => {
+    if (savedMovies.length === 0) {
+      return false;
+    }
+
+    return savedMovies.some((item) => {
+      if (item.movieId === movie.id) {
+        movie._id = item._id;
+        return true;
+      }
+      return false;
+    });
+  };
+
+  const renderMovies = () => {
+    return movies.slice(0, renderCount).map((movie) => (
+      <MoviesCard
+        key={movie.movieId || movie.id}
+        movie={movie}
+        isLiked={isLiked(movie)}
+        isSavedMoviesPage={isSavedMoviesPage}
+        onSave={onSave}
+        onRemove={onRemove}
+      />
+    ));
+  };
 
   return (
-    <ul className="movies-cardlist">
-      {moviesData.map((movie, index) => (
-        <MoviesCard key={index} movie={movie} />
-      ))}
-    </ul>
+    searchStatus.isLoading ? <Loader /> :
+      <>
+        {searchStatus.isError
+          ? <div className="movies-content__error-wrapper">
+            {searchStatus.message === 'Найдите фильм себе по душе'}
+            <h2 className="movies-content__error">{searchStatus.message}</h2>
+          </div>
+
+          : <ul className="movies-cardlist">
+            {renderMovies()}
+          </ul>
+        }
+        {isMoreButton && !isRenderingMore && !searchStatus.isError &&
+          <More onClick={incrementPage} />
+        }
+        {isRenderingMore && <Loader />}
+      </>
   );
 }
 

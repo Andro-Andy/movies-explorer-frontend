@@ -20,8 +20,10 @@
 
 .movies-card__image {
   width: 100%;
-  height: auto;
+  height: 201px;
   margin: 18px 0;
+  object-fit: cover;
+  cursor: pointer;
 }
 
 
@@ -57,6 +59,13 @@
   background-size: cover;
   transition: all 200ms ease-in-out;
 
+}
+
+.movies-card__delete {
+  background-image: url(../../images/icon/card-delete.svg);
+  background-color: transparent;
+  background-size: cover;
+  transition: all 200ms ease-in-out;
 }
 
 .movies-card__title {

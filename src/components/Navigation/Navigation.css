@@ -83,17 +83,19 @@
 
   .header__item {
     padding-bottom: 3px;
+
   }
 
   .header__link {
     font-size: 18px;
     line-height: normal;
     font-weight: 500;
+
+    &:hover {
+      opacity: .7;
+    }
   }
 
-  .underline {
-    border-bottom: 2px solid #fff;
-  }
 
   .font {
     font-size: 14px;

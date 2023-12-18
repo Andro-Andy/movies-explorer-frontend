@@ -1,16 +1,31 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import headerLogo from '../../images/icon/logo-header.svg';
 import Navigation from '../Navigation/Navigation';
 import AuthNav from '../AuthNav/AuthNav';
 import './Header.css';
-import Logo from '../Logo/Logo';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
-function Header({ isLogged }) {
+function Header() {
+  const { isLogged } = useContext(CurrentUserContext);
   const location = useLocation();
   const [burger, setBurger] = useState(false);
   const hideAuthNavPaths = ['/movies', '/saved-movies'];
   const shouldHideAuthNav = hideAuthNavPaths.includes(location.pathname);
+
+  useEffect(() => {
+    if (isLogged) {
+      setBurger(true);
+    }
+  }, [isLogged]);
+
+  const renderBurger = isLogged && <div onClick={() => setBurger(true)} className="header__burger"></div>;
+
+  const renderNavigation = isLogged ? (
+    <Navigation burger={burger} setBurger={setBurger} />
+  ) : shouldHideAuthNav ? null : (
+    <AuthNav />
+  );
 
   return (
     <header className="header">
@@ -21,17 +36,10 @@ function Header({ isLogged }) {
           alt="Логотип в виде латинской С в зеленом круге"
         />
       </Link>
-      {isLogged && (
-        <div onClick={(e) => setBurger(true)} className="header__burger"></div>
-      )}
-      {isLogged ? (
-        <Navigation burger={burger} setBurger={setBurger} />
-      ) : shouldHideAuthNav ? null : (
-        <AuthNav />
-      )}
+      {renderBurger}
+      {renderNavigation}
     </header>
   );
 }
 
 export default Header;
-
