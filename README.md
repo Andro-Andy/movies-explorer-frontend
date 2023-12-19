@@ -2,7 +2,7 @@
 
 # [Пулреквест](https://github.com/Andro-Andy/movies-explorer-frontend/pull/3)
 
-# [Поиск по Домену](https://movie-dox.nomoredomainsmonster.ru)
+# [Поиск по Домену](http://movie-dox.nomoredomainsmonster.ru)
 
 ### Публичный IPv4 : 51.250.81.187
 
