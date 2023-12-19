@@ -44,6 +44,8 @@ const useFormAndValidation = (initialValues = {}, initialErrors = {}, initialVal
     values: initialValues,
     errors: initialErrors,
     isValid: initialValid,
+    setValid: () => {},
+    setErrors: () => {},
   });
 
   const handleChange = (evt) => {

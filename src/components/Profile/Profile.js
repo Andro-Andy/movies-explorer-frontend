@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import useFormAndValidation from '../../hooks/useFormAndValidation';
 import { REGEXP_EMAIL } from '../../utils/config.global';
@@ -7,29 +7,22 @@ import './Profile.css';
 
 function Profile({ onProfileUpdate, onLogout, reqStatus }) {
   const currentUser = useContext(CurrentUserContext);
-  const [name, setName] = useState(currentUser.name);
-  const [email, setEmail] = useState(currentUser.email);
 
   const {
     values,
-    setValues,
     errors,
-    setErrors,
     isValid,
-    setValid,
-    handleChange
-  } = useFormAndValidation();
-
+    setErrors,
+    handleChange,
+    resetForm,
+    setValid
+  } = useFormAndValidation({
+    name: currentUser.name,
+    email: currentUser.email,
+  });
   useEffect(() => {
-    setValues({ name, email });
-    setValid(true);
-  }, [name, email, setValues, setValid]);
-
-  useEffect(() => {
-    if (values.name === name && values.email === email) {
-      setValid(false);
-    }
-  }, [values, name, email, setValid]);
+    resetForm({ name: currentUser.name, email: currentUser.email }, {}, true);
+  }, [currentUser, resetForm]);
 
   const handleChangeEmail = (evt) => {
     handleChange(evt);
@@ -44,6 +37,15 @@ function Profile({ onProfileUpdate, onLogout, reqStatus }) {
       }));
     }
   };
+  // const handleChangeEmail = (evt) => {
+  //   handleChange(evt);
+
+  //   const { name, value } = evt.target;
+
+  //   if (name === 'email' && !REGEXP_EMAIL.test(value)) {
+  //     resetForm({}, { email: 'Формат почты: name@gmail.com' }, false);
+  //   }
+  // };
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -63,8 +65,8 @@ function Profile({ onProfileUpdate, onLogout, reqStatus }) {
                 id="name"
                 name="name"
                 type="text"
-                value={values.name ?? ''}
-                onChange={(e) => handleChange(e, setName)}
+                value={values.name}
+                onChange={handleChange}
                 minLength={2}
                 maxLength={30}
                 required
@@ -80,8 +82,8 @@ function Profile({ onProfileUpdate, onLogout, reqStatus }) {
                 id="email"
                 name="email"
                 type="email"
-                value={values.email ?? ''}
-                onChange={(e) => handleChangeEmail(e, setEmail)}
+                value={values.email}
+                onChange={handleChangeEmail}
                 required
               />
             </label>
@@ -94,7 +96,7 @@ function Profile({ onProfileUpdate, onLogout, reqStatus }) {
           <>
             <button
               disabled={!isValid}
-              className={`profile__form-button ${!isValid ? 'profile__form-button' : ''}`}
+              className={`profile__form-button ${!isValid ? 'profile__form-button_disabled' : ''}`}
               type="submit"
               title="Редактировать"
             >
