@@ -1,4 +1,4 @@
-import MoviesCard from '../../MoviesCard/MoviesCard';
+import MoviesCard from '../MoviesCard/MoviesCard';
 import './MoviesCardList.css';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';

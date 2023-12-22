@@ -13,13 +13,13 @@ function Techs() {
         </p>
       </div>
       <div className="techs__technologies">
-        <div className="techs__item">HTML</div>
-        <div className="techs__item">CSS</div>
-        <div className="techs__item">JS</div>
-        <div className="techs__item">React</div>
-        <div className="techs__item">Git</div>
-        <div className="techs__item">Express.js</div>
-        <div className="techs__item">mongoDB</div>
+        <p className="techs__item">HTML</p>
+        <p className="techs__item">CSS</p>
+        <p className="techs__item">JS</p>
+        <p className="techs__item">React</p>
+        <p className="techs__item">Git</p>
+        <p className="techs__item">Express.js</p>
+        <p className="techs__item">mongoDB</p>
       </div>
     </section>
   );

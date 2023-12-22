@@ -1,6 +1,6 @@
 import { useEffect, useReducer } from 'react';
-import { SEARCH_KEY, REGEXP_FILTER } from '../utils/config.global';
-
+import { REGEXP_FILTER } from '../utils/config.global';
+const SEARCH_KEY = 'search';
 const initialState = {
   filteredMovies: [],
   savedQuery: { string: '', isShort: false, movies: [] },

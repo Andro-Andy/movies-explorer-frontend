@@ -1,4 +1,4 @@
-import MoviesCardList from '../MoviesCardList/MoviesCardList.js';
+import MoviesCardList from '../Movies/MoviesCardList/MoviesCardList.js';
 import SearchForm from '../SearchForm/SearchForm.js';
 import { useFilter } from '../../hooks/useFilter';
 import './SavedMovies.css';

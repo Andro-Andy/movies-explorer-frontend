@@ -1,5 +1,5 @@
 import React from 'react';
-import LandingLogo from '../../images/icon/landing-logo.svg';
+import LandingLogo from '../../../images/icon/landing-logo.svg';
 import './Promo.css';
 
 function Promo() {

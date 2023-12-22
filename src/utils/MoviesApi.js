@@ -1,7 +1,7 @@
-import { URL_MOVIES_API } from './config.global';
+export const MOVIES_API = 'https://api.nomoreparties.co/beatfilm-movies';
 
 export const getMovies = () => {
-  return fetch(URL_MOVIES_API, {
+  return fetch(MOVIES_API, {
     headers: {
       'Content-Type': 'application/json',
     },

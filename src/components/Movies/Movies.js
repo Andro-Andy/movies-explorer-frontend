@@ -1,5 +1,5 @@
 import SearchForm from '../SearchForm/SearchForm.js';
-import MoviesCardList from '../MoviesCardList/MoviesCardList.js';
+import MoviesCardList from './MoviesCardList/MoviesCardList.js';
 import './Movies.css';
 import { useFilter } from '../../hooks/useFilter';
 

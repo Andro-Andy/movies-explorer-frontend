@@ -1,17 +1,15 @@
-import { MOVIES_URL } from '../../utils/config.global';
 import './MoviesCard.css';
 
 function MoviesCard({ movie, isLiked, isSavedMoviesPage, onSave, onRemove }) {
   const formatDuration = (duration) => {
     const hours = Math.floor(duration / 60);
     const minutes = duration % 60;
-
     const hoursText = hours > 0 ? `${hours}ч` : '';
     const minutesText = minutes > 0 ? `${minutes}м` : '';
 
     return `${hoursText} ${minutesText}`;
   };
-
+  const MOVIES_URL = 'https://api.nomoreparties.co';
   const openLink = () => {
     window.open(`${movie.trailerLink}`);
   };

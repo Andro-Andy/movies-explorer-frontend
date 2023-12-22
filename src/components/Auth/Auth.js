@@ -151,7 +151,7 @@ function Auth({ type, onLogin, onRegister, reqStatus }) {
       {renderCaption[type]}
     </section>
   ) : (
-    <Navigate to={ROUTER.movies} replace={true} />
+    <Navigate to={'/movies'} replace={true} />
   );
 }
 

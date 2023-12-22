@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { ROUTER, SEARCH_KEY } from '../../utils/config.global';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import './SearchForm.css';
 
 function SearchForm({ onSubmit, savedQuery }) {
   const path = useLocation().pathname;
-  const isMoviesPage = path === ROUTER.movies;
-
+  const isMoviesPage = path === '/movies';
+  const SEARCH_KEY = 'search';
   const [query, setQuery] = useState({
     string: savedQuery.string,
     isShort: savedQuery.isShort,

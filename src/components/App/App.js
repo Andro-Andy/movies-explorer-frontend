@@ -7,13 +7,9 @@ import './App.css';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { ScreenTypeContext } from '../../contexts/ScreenTypeContext';
 import {
-  TOKEN_KEY,
-  ROUTER,
   SCREEN,
-  INITIAL_USER_STATE,
   SUCCESS_MESSAGES,
   INITIAL_REQUEST_STATUS,
-  MOVIES_URL,
 } from '../../utils/config.global';
 
 import Loader from '../Loader/Loader';
@@ -29,12 +25,17 @@ import MoviesPage from '../Movies/Movies';
 import SavedMoviesPage from '../SavedMovies/SavedMovies';
 import ProfilePage from '../Profile/Profile';
 import AuthPage from '../Auth/Auth';
-
+const TOKEN = 'jwt';
+const MOVIES_URL = 'https://api.nomoreparties.co';
+const USER_STATE = {
+  name: '',
+  email: '',
+  isLogged: !!localStorage.getItem('jwt'),
+};
 const App = () => {
   const navigate = useNavigate();
   const screenTypeDebouncer = useRef(null);
-
-  const [currentUser, setCurrentUser] = useState(INITIAL_USER_STATE);
+  const [currentUser, setCurrentUser] = useState(USER_STATE);
   const [screenType, setScreenType] = useState(SCREEN.desktop.type);
   const [requestStatus, setRequestStatus] = useState(INITIAL_REQUEST_STATUS);
   const [isPopupOpen, setPopupOpen] = useState(false);
@@ -115,9 +116,9 @@ const App = () => {
     handleReqLoading(true);
     try {
       const { token } = await MainApi.login({ email, password });
-      localStorage.setItem(TOKEN_KEY, token);
+      localStorage.setItem(TOKEN, token);
       setCurrentUser((userData) => ({ ...userData, isLogged: true }));
-      navigate(ROUTER.movies, { replace: true });
+      navigate('/movies', { replace: true });
     } catch (error) {
       handleReqError(true, error);
     } finally {
@@ -144,7 +145,7 @@ const App = () => {
     try {
       await MainApi.signOut();
       resetAuthState();
-      navigate(ROUTER.main, { replace: true });
+      navigate('/', { replace: true });
     } catch (error) {
       handleReqError(true, error);
     } finally {
@@ -215,7 +216,7 @@ const App = () => {
             <Route element={<Layout hasHeader={true} hasFooter={true} />}>
               <Route element={<ProtectedRoute />}>
                 <Route
-                  path={ROUTER.movies}
+                  path={'/movies'}
                   element={
                     <MoviesPage
                       movies={movies}
@@ -226,7 +227,7 @@ const App = () => {
                   }
                 />
                 <Route
-                  path={ROUTER.saved}
+                  path={'/saved-movies'}
                   element={
                     <SavedMoviesPage
                       movies={savedMovies}
@@ -235,12 +236,12 @@ const App = () => {
                   }
                 />
               </Route>
-              <Route path={ROUTER.main} element={<MainPage />} />
+              <Route path={'/'} element={<MainPage />} />
             </Route>
             <Route element={<Layout hasHeader={true} hasFooter={false} />}>
               <Route element={<ProtectedRoute />}>
                 <Route
-                  path={ROUTER.profile}
+                  path={'/profile'}
                   element={
                     <ProfilePage
                       onProfileUpdate={handleProfileUpdate}
@@ -253,7 +254,7 @@ const App = () => {
             </Route>
             <Route element={<Layout hasHeader={false} hasFooter={false} />}>
               <Route
-                path={ROUTER.login}
+                path={'/signin'}
                 element={
                   <AuthPage
                     type={'login'}
@@ -263,7 +264,7 @@ const App = () => {
                 }
               />
               <Route
-                path={ROUTER.register}
+                path={'/signup'}
                 element={
                   <AuthPage
                     type={'register'}
@@ -272,7 +273,7 @@ const App = () => {
                   />
                 }
               />
-              <Route path={ROUTER.any} element={<PageNotFound />} />
+              <Route path={'*'} element={<PageNotFound />} />
             </Route>
           </Routes>
         </Suspense>

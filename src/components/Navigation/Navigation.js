@@ -3,7 +3,7 @@ import { NavLink, Link } from 'react-router-dom';
 import headerLogoProfile from '../../images/icon/profile.svg';
 import './Navigation.css';
 import cn from 'classnames';
-import { ROUTER } from '../../utils/config.global';
+
 
 function Navigation({ burger, setBurger }) {
   const handleClick = () => {
@@ -11,8 +11,8 @@ function Navigation({ burger, setBurger }) {
   };
 
   const navLinks = [
-    { to: ROUTER.movies, text: 'Фильмы' },
-    { to: ROUTER.saved, text: 'Сохраненные фильмы' },
+    { to: '/movies', text: 'Фильмы' },
+    { to: '/saved-movies', text: 'Сохраненные фильмы' },
   ];
 
   return (
@@ -33,7 +33,7 @@ function Navigation({ burger, setBurger }) {
           ))}
         </ul>
       </nav>
-      <Link className="header__profile" to={ROUTER.profile} onClick={handleClick}>
+      <Link className="header__profile" to={'/profile'} onClick={handleClick}>
         <p className="header__link font link">Аккаунт</p>
         <img
           className="header__profile-icon"

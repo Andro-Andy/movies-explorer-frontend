@@ -1,4 +1,5 @@
-import { URL_MAIN_API } from './config.global';
+export const MAIN_API = 'http://api.movie-dox.nomoredomainsmonster.ru';
+// export const MAIN_API = 'http://localhost:3001';
 
 const _headers = {
   'Accept': 'application/json',
@@ -6,7 +7,7 @@ const _headers = {
 };
 
 const _request = (url, options) => {
-  return fetch(URL_MAIN_API + url, options)
+  return fetch(MAIN_API + url, options)
     .then((res) => {
       if (res.ok) {
         return res.json();

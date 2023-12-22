@@ -1,20 +1,3 @@
-export const TOKEN_KEY = 'jwt';
-export const SEARCH_KEY = 'search';
-
-export const URL_MAIN_API = 'http://api.movie-dox.nomoredomainsmonster.ru';
-// export const URL_MAIN_API = 'http://localhost:3001';
-export const URL_MOVIES_API = 'https://api.nomoreparties.co/beatfilm-movies';
-export const MOVIES_URL = 'https://api.nomoreparties.co';
-
-export const ROUTER = {
-  main: '/',
-  movies: '/movies',
-  saved: '/saved-movies',
-  profile: '/profile',
-  login: '/signin',
-  register: '/signup',
-  any: '*',
-};
 
 export const SCREEN = {
   desktop: {
@@ -37,11 +20,7 @@ export const SCREEN = {
   },
 };
 
-export const INITIAL_USER_STATE = {
-  name: '',
-  email: '',
-  isLogged: !!localStorage.getItem(TOKEN_KEY),
-};
+
 
 export const INITIAL_REQUEST_STATUS = {
   isLoading: false,
